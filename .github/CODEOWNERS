@@ -1,0 +1,8 @@
+# Infrastructure code owners
+/iac/ @your-github-username
+
+# Lambda function owners
+/lambda/ @your-github-username
+
+# GitHub workflows
+/.github/ @your-github-username
