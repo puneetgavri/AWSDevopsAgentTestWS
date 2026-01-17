@@ -95,18 +95,15 @@ jobs:
         run: exit 1
 
       - name: Terraform Apply
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: terraform apply -auto-approve -input=false
 
       - name: Get Terraform Outputs
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         id: outputs
         run: |
           echo "api_url=$(terraform output -raw api_gateway_url)" >> $GITHUB_OUTPUT
           echo "cloudfront_url=$(terraform output -raw cloudfront_domain)" >> $GITHUB_OUTPUT
 
       - name: Display Deployment Info
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: |
           echo "🚀 Deployment Complete!"
           echo "API Gateway URL: ${{ steps.outputs.outputs.api_url }}"
